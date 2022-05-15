@@ -69,5 +69,21 @@ class CreateUserForm extends GridPane {
         cancel.setOnAction(e -> {
             this.cancelAction();
         });
+        
+          HBox buttonPane = new HBox();
+        buttonPane.getChildren().addAll(submit, cancel);
+        buttonPane.setSpacing(10);
+ 			Node - Column - Row
+        super.getChildren().clear();
+        super.add(imageView, 1, 0);
+        super.add(lblCipher, 0, 1);
+        super.add(txtCipher, 1, 1);
+        super.add(zgjedhPane, 1, 3);
+        super.add(buttonPane, 1, 6);
+        super.setAlignment(Pos.CENTER);
+        super.setVgap(10);
+        super.setHgap(10);
+    }
+
 
 
