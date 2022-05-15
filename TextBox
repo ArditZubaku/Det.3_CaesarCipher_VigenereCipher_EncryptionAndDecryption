@@ -59,4 +59,15 @@ class CreateUserForm extends GridPane {
         HBox genderPane = new HBox();
         genderPane.getChildren().addAll(caesar, vigenere);
         genderPane.setSpacing(2.5);
+        
+         Button submit = new Button("Shkruaj");
+        submit.setOnAction(e -> {
+            this.submitAction();
+        });
+
+        Button cancel = new Button("Cancel");
+        cancel.setOnAction(e -> {
+            this.cancelAction();
+        });
+
 
