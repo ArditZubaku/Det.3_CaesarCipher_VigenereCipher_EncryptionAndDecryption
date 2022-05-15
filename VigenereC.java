@@ -37,3 +37,32 @@ public class VigenereC {
         }
         while (i != 1 && i != 2 && i != -1);
     }
+    
+public static String vigenereEncipher(String input, String key, String out) throws FileNotFoundException {
+        File newfile1 = new File(out);
+        PrintStream encoded = new PrintStream(newfile1);  // creates new file
+        File reader = new File(input);  // creates file to scan
+        Scanner in = new Scanner(reader); // creates scanner
+        while (in.hasNextLine())  // runs while the file has another line
+        {
+            String word = in.nextLine();            // gets next line of file
+            String cipher = word.toUpperCase();     // makes all letters uppercase
+            String encipher = "";                   // String to be written into new file
+            for (int loop = 0, j = 0; loop < cipher.length(); loop++) // loops through the line to check each character
+            {
+                char letter = cipher.charAt(loop);// current character
+                if (letter == ' ') {
+                    encipher = encipher + ' ';
+                    continue;
+                }
+                if (letter < 'A' || letter > 'Z') continue;
+                int asciiValue = (((letter - 65) + (key.charAt(j) - 65)) % 26 + 65);
+                char newChar = (char) asciiValue;
+                j = ++j % key.length();
+                encipher += newChar; // adds the new character to outgoing string
+            }
+            encoded.println(encipher);
+        }
+        encoded.close();
+        return "DONE";
+    }
