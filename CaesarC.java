@@ -36,3 +36,25 @@ public class CaesarC {
         }
         while (i != 1 && i != 2 && i != -1);
     }
+    public static String caesarEncipher(String input, int shift, String out) throws FileNotFoundException {
+        File newfile = new File(out);
+        PrintStream encoded = new PrintStream(newfile);  // creates new file
+        File reader = new File(input);  // creates file to scan
+        Scanner in = new Scanner(reader); // creates scanner
+        while (in.hasNextLine())  // runs while the file has another line
+        {
+            String word = in.nextLine();            // gets next line of file
+            String cipher = word.toUpperCase();     // makes all letters uppercase
+            String encipher = "";                   // String to be written into new file
+            int loop;
+            for (loop = 0; loop < cipher.length(); loop++) // loops through the line to check each character
+            {
+                char curr = cipher.charAt(loop);  // current character
+                char newChar = crypt(curr, shift);  // runs through crypt method (Below)
+                encipher = encipher + newChar; // adds the new character to outgoing string
+            }
+            encoded.println(encipher);
+        }
+        encoded.close();
+        return "DONE";
+    }
