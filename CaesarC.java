@@ -79,3 +79,40 @@ public class CaesarC {
         return "DONE";
     }
 
+       public static char crypt(char c, int shift) {
+        char encrypted = c;  // character passed in from for loop
+        int alter = shift; // shift passed in
+        if (Character.isLetter(encrypted)) // checks for only letters
+        {
+            int enc;
+            if ((int) encrypted + alter > 91) // if ASCII value after altering is beyond 'Z' value, run this to loop back to 'A'
+            {
+                enc = encrypted - 65;
+                enc += alter;
+                enc = enc % 26;
+                enc += 65;
+                encrypted = (char) enc;
+            } else enc = encrypted + alter;
+            encrypted = (char) enc;
+        }
+        return encrypted;
+    }
+
+    public static char decrypt(char c, int shift) {
+        char decrypted = c;
+        int alter = -shift;
+        if (Character.isLetter(decrypted)) {
+            int dec;
+            if ((int) decrypted + alter < 65)  // if ASCII value after altering is below 'A' value, run this to correct overflow
+            {
+                dec = decrypted + 65;
+                dec += alter;
+                dec = dec % 26;
+                dec += 65;
+                decrypted = (char) dec;
+            } else dec = decrypted + alter;
+            decrypted = (char) dec;
+        }
+        return decrypted;
+    }
+}
