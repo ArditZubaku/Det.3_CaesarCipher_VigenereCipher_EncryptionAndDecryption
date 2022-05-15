@@ -66,3 +66,18 @@ public static String vigenereEncipher(String input, String key, String out) thro
         encoded.close();
         return "DONE";
     }
+public static String vigenereDecipher(String input, String key, String out) throws FileNotFoundException {
+        PrintStream decoded = new PrintStream(out);
+        File read = new File(input);
+        Scanner in = new Scanner(read);
+        while (in.hasNextLine()) {
+            String word = in.nextLine();
+            word = word.toUpperCase();
+            String cipher = word;
+            String decipher = "";
+            for (int loop = 0, j = 0; loop < cipher.length(); loop++) {
+                char letter = cipher.charAt(loop);
+                if (letter == ' ') {
+                    decipher += ' ';
+                    continue;
+                }
