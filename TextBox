@@ -38,3 +38,25 @@ public class Main extends Application {
         primaryStage.show();
     }
 }
+
+class CreateUserForm extends GridPane {
+    private UserRepository userRepository = new UserRepository();
+
+    private TextField txtCipher;
+    private ToggleGroup zgjedh;
+
+    private void load() throws FileNotFoundException {
+
+        Label lblCipher = new Label("Zgjedh nje cipher: ");
+        this.txtCipher = new TextField();
+        this.txtCipher.setPromptText("Shkruani ...");
+
+        this.zgjedh = new ToggleGroup();
+        RadioButton caesar = new RadioButton("Caesar");
+        caesar.setToggleGroup(this.zgjedh);
+        RadioButton vigenere = new RadioButton("Vigenere");
+        vigenere.setToggleGroup(zgjedh);
+        HBox genderPane = new HBox();
+        genderPane.getChildren().addAll(caesar, vigenere);
+        genderPane.setSpacing(2.5);
+
