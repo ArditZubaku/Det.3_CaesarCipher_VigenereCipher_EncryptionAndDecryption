@@ -81,3 +81,15 @@ public static String vigenereDecipher(String input, String key, String out) thro
                     decipher += ' ';
                     continue;
                 }
+if (letter < 'A' || letter > 'Z') continue;
+                int asciiValue = ((letter - key.charAt(j) + 26) % 26 + 65);
+                char newChar = (char) (asciiValue);
+                j = ++j % key.length();
+                decipher += newChar;
+            }
+            decoded.println(decipher);
+        }
+        decoded.close();
+        return "DONE";
+    }
+}
