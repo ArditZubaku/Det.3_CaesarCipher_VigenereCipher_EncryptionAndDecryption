@@ -20,3 +20,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Pane pane = new Pane();
+        CreateUserForm userForm = new CreateUserForm();
+
+        Scene scene = new Scene(userForm, 850, 760);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("TextBox!");
+        primaryStage.show();
+    }
+}
