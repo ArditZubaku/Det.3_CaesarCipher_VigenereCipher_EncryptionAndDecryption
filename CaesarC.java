@@ -58,3 +58,24 @@ public class CaesarC {
         encoded.close();
         return "DONE";
     }
+      public static String caesarDecipher(String input, int shift, String out) throws FileNotFoundException {
+        PrintStream decoded = new PrintStream(out);
+        File read = new File(input);
+        Scanner in = new Scanner(read);
+        while (in.hasNextLine()) {
+            String word = in.nextLine();
+            word = word.toUpperCase();
+            String cipher = word;
+            String decipher = "";
+            int loop;
+            for (loop = 0; loop < cipher.length(); loop++) {
+                char curr = cipher.charAt(loop);
+                char newChar = decrypt(curr, shift);
+                decipher = decipher + newChar;
+            }
+            decoded.println(decipher);
+        }
+        decoded.close();
+        return "DONE";
+    }
+
